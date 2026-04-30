@@ -1,12 +1,73 @@
-# React + Vite
+# Aryan Ahmad Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern personal portfolio website built with React and Vite, showcasing full-stack development, mobile app expertise, AI engineering, and software engineering projects.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This portfolio site offers a polished landing experience with animated hero content, project showcases, skills visualization, testimonials, and a web-based contact form.
 
-## Expanding the ESLint configuration
+## Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Responsive React UI with Tailwind CSS and modern motion effects
+- Client-side routing using React Router DOM
+- Animated hero section with `framer-motion` and interactive particles
+- Project sections, testimonials, skill highlights, and service pages
+- Contact form integration with email support
+- Mobile-friendly navigation and smooth page transitions
+
+## Tech Stack
+
+- React 19
+- Vite
+- Tailwind CSS
+- React Router DOM
+- Framer Motion
+- `react-simple-typewriter`
+- `tsparticles` for animated backgrounds
+- Lottie animations for visual storytelling
+- EmailJS for contact form email delivery
+
+## Setup
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Start the development server:
+
+```bash
+npm run dev
+```
+
+3. Build for production:
+
+```bash
+npm run build
+```
+
+4. Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+- `src/`: application source code
+- `src/components/`: reusable UI components and page sections
+- `src/pages/`: route pages like Home, About, Projects, Services, and Contact
+- `public/`: static assets and server resources
+- `vite.config.js`: Vite configuration
+
+## Scripts
+
+- `npm run dev`: start the Vite development server
+- `npm run build`: compile the app for production
+- `npm run preview`: preview the production build
+- `npm run lint`: run ESLint across the project
+
+## Notes
+
+This portfolio is designed for fast performance, mobile responsiveness, and a strong visual presentation to highlight technical skills and projects.
