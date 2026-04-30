@@ -1,81 +1,73 @@
 import { motion } from 'framer-motion';
-import { FiZap, FiCpu, FiCode, FiLayers, FiUsers, FiAward } from 'react-icons/fi';
+import { FiZap, FiCpu, FiCode, FiLayers } from 'react-icons/fi';
 
 const features = [
   {
-    icon: <FiZap className="text-indigo-600" size={28} />,
+    icon: <FiZap size={28} />,
     title: "Fast Delivery",
-    desc: "Agile development process with iterative deployments and continuous integration for rapid, high-quality results"
+    desc: "Agile development process with iterative deployments and continuous integration for rapid, high-quality results."
   },
   {
-    icon: <FiCpu className="text-indigo-600" size={28} />,
+    icon: <FiCpu size={28} />,
     title: "Problem Solver",
-    desc: "Analytical approach to complex challenges with optimized, scalable solutions"
+    desc: "Analytical approach to complex challenges with optimized, scalable solutions and performance-first architecture."
   },
   {
-    icon: <FiCode className="text-indigo-600" size={28} />,
+    icon: <FiCode size={28} />,
     title: "Clean Code",
-    desc: "Modular, well-documented code following best practices and design patterns"
+    desc: "Modular, well-documented code following SOLID principles and industry-standard design patterns."
   },
   {
-    icon: <FiLayers className="text-indigo-600" size={28} />,
-    title: "Full-Stack Expertise",
-    desc: "End-to-end development capabilities from UI/UX to backend systems"
+    icon: <FiLayers size={28} />,
+    title: "Full-Stack Mastery",
+    desc: "End-to-end development capabilities from pixel-perfect UI/UX to robust cloud-native backend systems."
   }
 ];
 
-const WhyMeSection = () => (
-  <section className="py-20 bg-gradient-to-r from-indigo-50 to-blue-50">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">
-          Why <span className="text-indigo-600">Work With Me</span>?
-        </h2>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Professional strengths that deliver exceptional results
-        </p>
-      </motion.div>
-      
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {features.map((feature, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ 
-              y: -5,
-              boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)"
-            }}
-            className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:border-indigo-100 transition-all duration-300"
-          >
-            <div className="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-6">
-              {feature.icon}
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-            <p className="text-gray-600 leading-relaxed">{feature.desc}</p>
-          </motion.div>
-        ))}
-      </div>
+const WhyMeSection = () => {
+  return (
+    <section className="py-24 bg-white dark:bg-gray-950 transition-colors duration-500">
+      <div className="container mx-auto px-6">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <span className="text-blue-600 dark:text-blue-400 font-bold tracking-widest uppercase text-xs">Value Proposition</span>
+          <h2 className="text-4xl md:text-5xl font-black mt-3 mb-6 text-gray-900 dark:text-white">
+            Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Work With Me</span>?
+          </h2>
+          <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-6"></div>
+        </motion.div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+              className="group p-8 rounded-[2.5rem] glass border border-gray-100 dark:border-white/5 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10"
+            >
+              <div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-widest text-[12px]">{feature.title}</h3>
+              <p className="text-gray-500 dark:text-gray-400 leading-relaxed font-medium text-sm">
+                {feature.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-        viewport={{ once: true }}
-        className="mt-16 text-center"
-      >
-       
-      </motion.div>
-    </div>
-  </section>
-);
+      </div>
+    </section>
+  );
+};
 
 export default WhyMeSection;

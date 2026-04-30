@@ -3,7 +3,7 @@ import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import img1 from '../../assets/aryan1.png'; // Example image, replace with actual path
+import img1 from '../../assets/aryan.png';
 
 const HeroSection = () => {
   const particlesInit = async (engine) => {
@@ -20,251 +20,209 @@ const HeroSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const imageVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.16, 1, 0.3, 1] // Custom cubic-bezier for smooth motion
       }
     }
   };
 
   return (
-    <section 
-      className="relative h-[850px] sm:h-[800px] md:h-[600px] flex flex-col justify-start items-center sm:items-start sm:justify-center overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 px-4 sm:py-16 sm:pl-32 transition-colors duration-500"
+    <section
       ref={ref}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-gray-950 pt-20 px-6 sm:px-12 lg:px-24"
     >
-      {/* Enhanced Particles Background */}
+      {/* Dynamic Background Particles */}
       <Particles
         id="tsparticles"
         init={particlesInit}
+        className="absolute inset-0 z-0"
         options={{
-          background: { color: { value: "transparent" } },
+          fullScreen: { enable: false },
+          background: { color: "transparent" },
           fpsLimit: 120,
           interactivity: {
             events: {
-              onClick: { enable: true, mode: "push" },
-              onHover: { 
-                enable: true, 
-                mode: "repulse",
-                parallax: { enable: true, force: 60, smooth: 10 }
-              },
+              onHover: { enable: true, mode: "grab" },
+              resize: true,
             },
             modes: {
-              push: { quantity: 4 },
-              repulse: { 
-                distance: 100, 
-                duration: 0.8,
-                speed: 0.5
-              },
+              grab: { distance: 140, links: { opacity: 0.5 } },
             },
           },
           particles: {
-            color: { 
-              value: ["#3B82F6", "#8B5CF6", "#EC4899"] 
-            },
+            color: { value: "#3b82f6" },
             links: {
-              color: "#9CA3AF",
+              color: "#3b82f6",
               distance: 150,
               enable: true,
-              opacity: 0.4,
+              opacity: 0.2,
               width: 1,
-              triangles: {
-                enable: true,
-                color: "#3B82F6",
-                opacity: 0.1
-              }
             },
             move: {
+              enable: true,
+              speed: 1,
               direction: "none",
-              enable: true,
-              outModes: { default: "bounce" },
               random: true,
-              speed: 1.5,
               straight: false,
-              attract: {
-                enable: true,
-                rotateX: 600,
-                rotateY: 1200
-              }
+              outModes: "out",
             },
-            number: { 
-              density: { 
-                enable: true,
-                area: 800
-              }, 
-              value: 80 // Reduced for mobile performance
-            },
-            opacity: { 
-              value: { min: 0.1, max: 0.5 },
-              animation: {
-                enable: true,
-                speed: 1,
-                sync: false
-              }
-            },
-            shape: { 
-              type: ["circle", "triangle", "polygon"],
-              options: {
-                polygon: {
-                  sides: 5
-                }
-              }
-            },
-            size: { 
-              value: { min: 1, max: 5 },
-              animation: {
-                enable: true,
-                speed: 4,
-                minimumValue: 0.3,
-                sync: false
-              }
-            },
-            wobble: {
-              enable: true,
-              distance: 10,
-              speed: 3
-            }
+            number: { density: { enable: true, area: 800 }, value: 60 },
+            opacity: { value: 0.3 },
+            shape: { type: "circle" },
+            size: { value: { min: 1, max: 3 } },
           },
           detectRetina: true,
         }}
       />
-      
-      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-center md:justify-between relative z-10 gap-8 md:gap-0">
-        <motion.div 
-          className="w-full md:w-1/2 text-center md:text-left"
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={containerVariants}
-        >
-          <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white"
-            variants={itemVariants}
-          >
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500">Aryan Ahmad</span>
-          </motion.h1>
 
-          <motion.div 
-            className="text-xl sm:text-2xl md:text-2xl h-10 sm:h-12 mb-4 sm:mb-6 text-gray-700 dark:text-gray-200"
-            variants={itemVariants}
-          >
-            <Typewriter
-              words={[
-                'Full Stack Developer', 
-                'Mobile App Developer', 
-                'AI Integrator', 
-                'Python Expert', 
-                'UI/UX Enthusiast'
-              ]}
-              loop={true}
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={2000}
-              cursorBlinking={true}
-            />
-          </motion.div>
-          
-          <motion.p 
-            className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 text-base sm:text-lg lg:text-xl max-w-lg mx-auto md:mx-0 leading-relaxed"
-            variants={itemVariants}
-          >
-            I build exceptional digital experiences with cutting-edge technologies and AI integration.
-            Focused on creating scalable, performant solutions that drive business growth.
-          </motion.p>
+      {/* Decorative Orbs */}
+      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-[120px] animate-pulse"></div>
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-pulse"></div>
 
-          <motion.div 
-            className="flex flex-col sm:flex-row justify-center md:justify-start space-y-3 sm:space-y-0 sm:space-x-4"
-            variants={itemVariants}
+      <div className="container mx-auto z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
+
+          {/* Text Content */}
+          <motion.div
+            className="flex-1 text-center lg:text-left"
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={containerVariants}
           >
-            <motion.a 
-              href="#"
-              className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 text-white dark:text-white shadow-lg hover:shadow-xl text-sm sm:text-base"
-              whileHover={{ 
-                y: -3,
-                scale: 1.05
-              }}
-              whileTap={{ scale: 0.95 }}
+            <motion.span
+              variants={itemVariants}
+              className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-blue-600 dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800"
             >
-              <a href='/assets/Aryan.pdf' download="Aryan_Ahmad.pdf" className="relative z-10">View Resume</a>
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
-            </motion.a>
-            <motion.a 
-              href="#"
-              className="relative overflow-hidden border-2 border-blue-400 text-blue-400 hover:text-white dark:border-blue-300 dark:text-blue-300 dark:hover:text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 bg-transparent dark:bg-transparent group text-sm sm:text-base"
-              whileHover={{ 
-                y: -3,
-                scale: 1.05
-              }}
-              whileTap={{ scale: 0.95 }}
+              Available for Hire
+            </motion.span>
+
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl sm:text-6xl lg:text-8xl font-extrabold mb-6 leading-tight text-gray-900 dark:text-white"
             >
-              <span className="relative z-10">Contact Me</span>
-              <span className="absolute inset-0 bg-blue-400 dark:bg-blue-300 w-0 group-hover:w-full transition-all duration-500 -z-1"></span>
-            </motion.a>
+              Hi, I'm <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+                Aryan Ahmad
+              </span>
+            </motion.h1>
+
+            <motion.div
+              variants={itemVariants}
+              className="text-xl sm:text-2xl md:text-3xl font-medium mb-8 text-gray-600 dark:text-gray-300 h-12"
+            >
+              <Typewriter
+                words={['Full Stack Developer', 'Mobile App Expert', 'AI Engineer', 'Software Engineer']}
+                loop={0}
+                cursor
+                cursorStyle='_'
+                typeSpeed={80}
+                deleteSpeed={50}
+                delaySpeed={1500}
+              />
+            </motion.div>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed"
+            >
+              Transforming complex problems into elegant digital solutions with a focus on
+              performance, scalability, and user-centric design.
+            </motion.p>
+
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap justify-center lg:justify-start gap-4"
+            >
+              <motion.a
+                href="#projects"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold shadow-xl shadow-blue-500/20 transition-all flex items-center"
+              >
+                View My Work
+              </motion.a>
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-2 border-gray-100 dark:border-gray-800 rounded-2xl font-bold hover:border-blue-500 transition-all"
+              >
+                Let's Talk
+              </motion.a>
+            </motion.div>
           </motion.div>
-        </motion.div>
-        
-        <motion.div 
-          className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0"
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={imageVariants}
-        >
-          <div className="relative">
-            <img 
-              src={img1} 
-              alt="Aryan Ahmad" 
-              className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 bg-contain rounded-full border-4 border-white shadow-2xl relative z-10"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-xl opacity-20 dark:opacity-30 -z-1 animate-pulse"></div>
-            <div className="absolute -inset-2 sm:-inset-4 border-4 border-blue-400/30 dark:border-blue-300/30 rounded-full animate-spin-slow -z-1"></div>
-          </div>
-        </motion.div>
+
+          {/* Profile Image with Animations */}
+          <motion.div
+            className="flex-1 relative flex justify-center items-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <div className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px]">
+              {/* Outer Glow */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-600/20 rounded-full blur-[60px] animate-pulse"></div>
+
+              {/* Floating Container */}
+              <motion.div
+                className="relative w-full h-full rounded-full border-4 border-white/50 dark:border-white/10 shadow-2xl overflow-hidden glass"
+                animate={{
+                  y: [0, -20, 0],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <img
+                  src={img1}
+                  alt="Aryan Ahmad"
+                  className="w-full h-full object-cover scale-110 hover:scale-125 transition-transform duration-700"
+                />
+              </motion.div>
+
+              {/* Orbital Badge */}
+              <motion.div
+                className="absolute -top-4 -right-4 bg-white dark:bg-gray-900 p-4 rounded-2xl shadow-xl z-20 border border-gray-100 dark:border-gray-800"
+                animate={{ rotate: [0, 5, -5, 0], y: [0, 10, 0] }}
+                transition={{ duration: 5, repeat: Infinity }}
+              >
+                <div className="text-center">
+                  <span className="block text-2xl font-bold text-blue-600">3+</span>
+                  <span className="text-[10px] uppercase tracking-tighter text-gray-400">Years Exp.</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Rotating border elements */}
+            <div className="absolute w-[110%] h-[110%] border-2 border-dashed border-blue-500/30 rounded-full animate-spin-slow"></div>
+          </motion.div>
+
+        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div 
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5 }}
+      {/* Scroll Down Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
       >
-        <div className="w-full flex flex-col items-center justify-end -pb-4 mt-2 sm:pb-0">
-          <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 sm:mb-2">Scroll Down</span>
-          <div className="mx-auto w-5 h-8 sm:w-6 sm:h-10 border-2 border-gray-400 dark:border-gray-300 rounded-full flex items-start justify-center">
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop"
-              }}
-              className="w-1 h-2 bg-gray-400 dark:bg-gray-300 rounded-full mt-1 sm:mt-2"
-            />
-          </div>
-        </div>
+        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Explore</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-blue-500 to-transparent"></div>
       </motion.div>
     </section>
   );

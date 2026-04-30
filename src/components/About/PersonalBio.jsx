@@ -3,67 +3,105 @@ import { motion } from 'framer-motion';
 
 const PersonalBio = () => {
   const funFacts = [
-    { icon: <FiCoffee className="text-amber-500" size={20} />, text: "Coffee enthusiast" },
-    { icon: <FiActivity className="text-emerald-500" size={20} />, text: "Competitive gamer" },
-    { icon: <FiBook className="text-blue-500" size={20} />, text: "Avid reader" },
-    { icon: <FiCode className="text-violet-500" size={20} />, text: "Open-source contributor" },
-    { icon: <FiUser className="text-rose-500" size={20} />, text: "Mentor to juniors" },
-    { icon: <FiAward className="text-yellow-500" size={20} />, text: "Hackathon winner" },
-    { icon: <FiLayers className="text-cyan-500" size={20} />, text: "Full-stack developer" },
-    { icon: <FiGlobe className="text-indigo-500" size={20} />, text: "Tech community speaker" }
+    { icon: <FiCoffee className="text-amber-500" />, text: "Coffee enthusiast" },
+    { icon: <FiActivity className="text-emerald-500" />, text: "Competitive gamer" },
+    { icon: <FiBook className="text-blue-500" />, text: "Avid reader" },
+    { icon: <FiCode className="text-violet-500" />, text: "Open-source contributor" },
+    { icon: <FiUser className="text-rose-500" />, text: "Mentor to juniors" },
+    { icon: <FiAward className="text-yellow-500" />, text: "Hackathon winner" },
+    { icon: <FiLayers className="text-cyan-500" />, text: "Full-stack developer" },
+    { icon: <FiGlobe className="text-indigo-500" />, text: "Tech community speaker" }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-10 sm:mb-14">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-          Behind the Code
-        </h2>
-        <div className="w-16 sm:w-20 h-1 bg-indigo-500 mx-auto"></div>
-      </div>
+    <section className="py-24 bg-white dark:bg-gray-950 transition-colors duration-500">
+      <div className="container mx-auto px-6">
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <span className="text-blue-600 dark:text-blue-400 font-bold tracking-widest uppercase text-xs">Lifestyle</span>
+          <h2 className="text-4xl md:text-5xl font-black mt-3 mb-6 text-gray-900 dark:text-white">
+            Behind the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Code</span>
+          </h2>
+          <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-6"></div>
+        </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-start">
-        {/* Left Text Content */}
-        <div className="space-y-5">
-          <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-            As a Software Engineering graduate with 3+ years of professional experience, 
-            I combine technical expertise with creative problem-solving to build impactful digital solutions.
-          </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          {/* Left Text Content */}
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <motion.p variants={itemVariants} className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+              As a Software Engineering graduate with 3+ years of professional experience, 
+              I combine technical expertise with creative problem-solving to build impactful digital solutions.
+            </motion.p>
 
-          <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-            My passion extends beyond writing code — I actively contribute to open-source projects, 
-            mentor aspiring developers, and stay at the forefront of emerging technologies through 
-            continuous learning and community engagement.
-          </p>
+            <motion.p variants={itemVariants} className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+              My passion extends beyond writing code — I actively contribute to open-source projects, 
+              mentor aspiring developers, and stay at the forefront of emerging technologies through 
+              continuous learning and community engagement.
+            </motion.p>
 
-          <div className="flex flex-wrap gap-3 sm:gap-4 mt-4">
-            {["React.js", "Node.js", "TypeScript", "AWS"].map((tech, idx) => (
-              <span 
-                key={idx}
-                className="px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-full text-xs sm:text-sm font-medium"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Right Fun Facts */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {funFacts.map((fact, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ 
-                y: -4,
-                boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)"
-              }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="bg-white p-4 sm:p-5 rounded-xl shadow-sm border border-gray-100 flex items-center gap-3"
-            >
-              <span className="text-xl p-2 bg-gray-50 rounded-lg">{fact.icon}</span>
-              <span className="text-sm sm:text-base font-medium text-gray-700">{fact.text}</span>
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-4">
+              {["React.js", "Node.js", "TypeScript", "AWS", "Python", "Docker"].map((tech, idx) => (
+                <span 
+                  key={idx}
+                  className="px-6 py-2 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded-2xl text-xs font-black uppercase tracking-widest border border-gray-100 dark:border-gray-800 shadow-sm"
+                >
+                  {tech}
+                </span>
+              ))}
             </motion.div>
-          ))}
+          </motion.div>
+
+          {/* Right Fun Facts */}
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          >
+            {funFacts.map((fact, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ y: -5 }}
+                className="group p-6 rounded-3xl glass border border-gray-100 dark:border-white/5 flex items-center gap-4 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5"
+              >
+                <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 text-2xl group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                  {fact.icon}
+                </div>
+                <span className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide">{fact.text}</span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

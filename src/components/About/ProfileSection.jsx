@@ -1,17 +1,14 @@
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
-import developerWave from '../../pages/lottie/web-development.json'; // Corrected Lottie file path
-import avatarPlaceholder from '../../assets/aryan1.png';
+import developerWave from '../../pages/lottie/web-development.json';
+import avatarPlaceholder from '../../assets/aryan.png';
 
 const ProfileSection = () => {
-  // Animation variants for cleaner code
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+      transition: { staggerChildren: 0.15 }
     }
   };
 
@@ -20,71 +17,93 @@ const ProfileSection = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
   return (
-    <section className="relative max-w-7xl mx-auto py-16 px-6 overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute -top-20 -right-20 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-xl opacity-20"></div>
-      <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-20"></div>
-      
-      <motion.div 
-        className="flex flex-col md:flex-row items-center justify-center gap-12"
+    <section className="relative min-h-[60vh] flex items-center justify-center py-24 px-6 overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-500">
+
+      {/* Decorative Orbs */}
+      <div className="absolute top-1/4 -right-20 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px] animate-pulse"></div>
+      <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-purple-500/10 rounded-full blur-[100px] animate-pulse"></div>
+
+      <motion.div
+        className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-16 lg:gap-24 z-10"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        {/* Avatar with Lottie animation */}
+        {/* Avatar with Floating Effect */}
         <motion.div
           variants={itemVariants}
-          className="relative w-56 h-56 rounded-full border-4 border-white shadow-2xl group"
+          className="relative group"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-full -z-10 transform group-hover:rotate-6 transition-transform duration-300"></div>
-          <img 
-            src={avatarPlaceholder} 
-            alt="Aryan Ahmad" 
-            className="w-full h-full bg-cover rounded-full border-4 border-white"
-          />
-          <div className="absolute -bottom-4 -right-4 w-24 h-24">
-            <Lottie 
-              animationData={developerWave} 
+          <motion.div
+            className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-[3rem] border-4 border-white dark:border-gray-800 shadow-2xl overflow-hidden glass"
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <img
+              src={avatarPlaceholder}
+              alt="Aryan Ahmad"
+              className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-700"
+            />
+          </motion.div>
+
+          {/* Lottie Overlay */}
+          <div className="absolute -bottom-8 -right-8 w-32 h-32 z-20">
+            <Lottie
+              animationData={developerWave}
               loop={true}
               style={{ width: '100%', height: '100%' }}
             />
           </div>
+
+          {/* Decorative Glow */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity -z-10"></div>
         </motion.div>
 
         {/* Text content */}
-        <motion.div 
+        <motion.div
           className="text-center md:text-left max-w-2xl"
           variants={containerVariants}
         >
+          <motion.span
+            variants={itemVariants}
+            className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-blue-600 dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-800"
+          >
+            Full-Stack Maestro
+          </motion.span>
+
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight"
+            className="text-5xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight"
           >
-            Hello, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">Aryan Ahmad</span>
+            Hello, I'm <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+              Aryan Ahmad
+            </span>
           </motion.h1>
-          
+
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 mb-6"
+            className="text-xl text-gray-500 dark:text-gray-400 mb-10 leading-relaxed font-medium"
           >
-            Full-stack developer passionate about crafting <span className="font-semibold text-indigo-600">scalable</span> and <span className="font-semibold text-blue-600">user-centric</span> applications
+            I architect digital ecosystems that are <span className="text-gray-900 dark:text-white underline decoration-blue-500/30 decoration-4">scalable</span>,
+            <span className="text-gray-900 dark:text-white underline decoration-purple-500/30 decoration-4">performant</span>, and
+            unapologetically <span className="text-gray-900 dark:text-white underline decoration-pink-500/30 decoration-4">elegant</span>.
           </motion.p>
-          
+
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap gap-3 justify-center md:justify-start"
+            className="flex flex-wrap gap-4 justify-center md:justify-start"
           >
-            <span className="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium shadow-sm">React Specialist</span>
-            <span className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium shadow-sm">Node.js Expert</span>
-            <span className="px-4 py-2 bg-violet-50 text-violet-700 rounded-full text-sm font-medium shadow-sm">TypeScript</span>
+            {['React Native', 'Node.js', 'Python', 'AI/ML'].map((skill, i) => (
+              <span key={i} className="px-6 py-3 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded-2xl text-xs font-black uppercase tracking-widest border border-gray-100 dark:border-gray-800 shadow-sm hover:border-blue-500 transition-all cursor-default">
+                {skill}
+              </span>
+            ))}
           </motion.div>
         </motion.div>
       </motion.div>

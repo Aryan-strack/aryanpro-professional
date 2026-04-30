@@ -4,55 +4,39 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { motion } from 'framer-motion';
-import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import { FiExternalLink, FiGithub, FiArrowRight } from 'react-icons/fi';
 
 const ProjectsSection = () => {
   const projects = [
     {
-      title: 'AI-Powered E-commerce Platform',
-      description: 'Integrated recommendation engine with Django backend and React frontend',
-      tags: ['React', 'Django', 'Machine Learning'],
-      image: 'https://images.unsplash.com/photo-1581092334115-1acb839bffb5?crop=entropy&cs=tinysrgb&fit=crop&w=600&h=400&q=80',
+      title: 'AI-Powered E-commerce',
+      description: 'Integrated recommendation engine with Django backend and React frontend.',
+      tags: ['React', 'Django', 'ML'],
+      image: 'https://images.unsplash.com/photo-1581092334115-1acb839bffb5?auto=format&fit=crop&w=800&q=80',
       demoLink: '#',
       githubLink: '#'
     },
     {
-      title: 'Cross-platform Fitness App',
-      description: 'Built with Flutter for both iOS and Android with Firebase backend',
+      title: 'Fitness Tracking Ecosystem',
+      description: 'Built with Flutter for cross-platform performance and real-time data.',
       tags: ['Flutter', 'Firebase', 'Dart'],
-      image: 'https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?crop=entropy&cs=tinysrgb&fit=crop&w=600&h=400&q=80',
+      image: 'https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=800&q=80',
       demoLink: '#',
       githubLink: '#'
     },
     {
-      title: 'Smart Home Automation System',
-      description: 'IoT solution with real-time monitoring and voice control integration',
+      title: 'Smart Home IoT Platform',
+      description: 'Real-time monitoring and voice control integration for modern homes.',
       tags: ['IoT', 'Node.js', 'React Native'],
-      image: 'https://images.unsplash.com/photo-1558002038-1055907df827?crop=entropy&cs=tinysrgb&fit=crop&w=600&h=400&q=80',
+      image: 'https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80',
       demoLink: '#',
       githubLink: '#'
     },
     {
-      title: 'Blockchain Voting System',
-      description: 'Decentralized voting platform with Ethereum smart contracts',
-      tags: ['Blockchain', 'Solidity', 'Web3.js'],
-      image: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?crop=entropy&cs=tinysrgb&fit=crop&w=600&h=400&q=80',
-      demoLink: '#',
-      githubLink: '#'
-    },
-    {
-      title: 'AI Content Generator',
-      description: 'GPT-3 powered content creation tool with custom templates',
-      tags: ['AI', 'Python', 'Next.js'],
-      image: 'https://images.unsplash.com/photo-1642784353725-5bf4f9c6c908?crop=entropy&cs=tinysrgb&fit=crop&w=600&h=400&q=80',
-      demoLink: '#',
-      githubLink: '#'
-    },
-    {
-      title: 'AR Furniture App',
-      description: 'Augmented reality app for visualizing furniture in your space',
-      tags: ['AR', 'Unity', 'ARKit'],
-      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?crop=entropy&cs=tinysrgb&fit=crop&w=600&h=400&q=80',
+      title: 'Blockchain Voting Solution',
+      description: 'Decentralized voting platform with Ethereum smart contracts and Web3.',
+      tags: ['Solidity', 'Web3', 'Ethereum'],
+      image: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&w=800&q=80',
       demoLink: '#',
       githubLink: '#'
     }
@@ -62,49 +46,54 @@ const ProjectsSection = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.5
-      }
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section id="projects" className="py-24 bg-white dark:bg-gray-950 transition-colors duration-500 overflow-hidden min-h-[600px]">
       <div className="container mx-auto px-6">
+        
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl font-bold mb-4 text-gray-800">Featured Projects</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore my latest work showcasing innovative solutions across various technologies
+          <span className="text-blue-600 dark:text-blue-400 font-bold tracking-widest uppercase text-xs">Portfolio</span>
+          <h2 className="text-4xl md:text-5xl font-black mt-3 mb-6 text-gray-900 dark:text-white">
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Projects</span>
+          </h2>
+          <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-6"></div>
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+            A selection of my recent works where design meets code to solve real-world problems.
           </p>
         </motion.div>
         
+        {/* Projects Swiper */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          className="relative px-4"
         >
           <Swiper
             modules={[Autoplay, Pagination, Navigation]}
-            spaceBetween={30}
+            spaceBetween={40}
             slidesPerView={1}
+            loop={true}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,
@@ -112,85 +101,90 @@ const ProjectsSection = () => {
             pagination={{
               clickable: true,
               dynamicBullets: true
-              // Use default Swiper classes, style in CSS or Tailwind
-            }}
-            navigation={{
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-              disabledClass: 'opacity-30'
             }}
             breakpoints={{
-              640: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
+              768: { slidesPerView: 2 },
+              1280: { slidesPerView: 3 },
             }}
-            className="pb-16 relative group"
+            className="pb-24 !overflow-visible"
           >
             {projects.map((project, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} className="h-auto">
                 <motion.div 
                   variants={itemVariants}
-                  whileHover={{ y: -5 }}
-                  className="h-full"
+                  className="group relative h-full rounded-[2.5rem] overflow-hidden glass border border-gray-100 dark:border-white/5 transition-all duration-500 hover:shadow-3xl hover:shadow-blue-500/10 flex flex-col"
                 >
-                  <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full mx-2 border border-gray-100">
-                    <div className="overflow-hidden h-48">
-                      <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                        loading="lazy"
-                      />
+                  {/* Image Container */}
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+                    
+                    {/* Floating Tags */}
+                    <div className="absolute top-6 left-6 flex flex-wrap gap-2">
+                      {project.tags.map((tag, i) => (
+                        <span key={i} className="px-3 py-1 bg-white/10 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest rounded-lg border border-white/20">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2 text-gray-800">{project.title}</h3>
-                      <p className="text-gray-600 mb-4">{project.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-5">
-                        {project.tags.map((tag, i) => (
-                          <span 
-                            key={i} 
-                            className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-medium"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex space-x-4 border-t pt-4">
-                        <a 
-                          href={project.demoLink} 
-                          className="flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                  </div>
+
+                  {/* Content Container */}
+                  <div className="p-8 flex flex-col flex-grow">
+                    <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors uppercase tracking-tight">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-500 dark:text-gray-400 mb-8 line-clamp-2 leading-relaxed font-medium">
+                      {project.description}
+                    </p>
+                    
+                    <div className="mt-auto flex items-center justify-between">
+                      <div className="flex space-x-3">
+                        <motion.a 
+                          href={project.githubLink}
+                          whileHover={{ y: -3, scale: 1.1 }}
+                          className="w-10 h-10 flex items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-400 dark:text-gray-500 rounded-xl hover:bg-blue-600 hover:text-white transition-all"
                         >
-                          <FiExternalLink className="mr-1" /> Demo
-                        </a>
-                        <a 
-                          href={project.githubLink} 
-                          className="flex items-center text-gray-600 hover:text-gray-800 font-medium transition-colors"
+                          <FiGithub size={18} />
+                        </motion.a>
+                        <motion.a 
+                          href={project.demoLink}
+                          whileHover={{ y: -3, scale: 1.1 }}
+                          className="w-10 h-10 flex items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-400 dark:text-gray-500 rounded-xl hover:bg-blue-600 hover:text-white transition-all"
                         >
-                          <FiGithub className="mr-1" /> Code
-                        </a>
+                          <FiExternalLink size={18} />
+                        </motion.a>
                       </div>
+                      
+                      <motion.button 
+                        whileHover={{ x: 5 }}
+                        className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 group/btn"
+                      >
+                        Details <FiArrowRight className="group-hover/btn:translate-x-1 transition-transform" />
+                      </motion.button>
                     </div>
                   </div>
                 </motion.div>
               </SwiperSlide>
             ))}
-            
-            {/* Custom navigation buttons */}
-            <div className="swiper-button-next after:hidden bg-white p-3 rounded-full shadow-md text-blue-600 hover:text-blue-800 transition-colors opacity-0 group-hover:opacity-100">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-            <div className="swiper-button-prev after:hidden bg-white p-3 rounded-full shadow-md text-blue-600 hover:text-blue-800 transition-colors opacity-0 group-hover:opacity-100">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </div>
           </Swiper>
         </motion.div>
+
+        {/* View All Button */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-center mt-12"
+        >
+          <a href="/projects" className="inline-flex items-center gap-3 px-10 py-5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-[2rem] font-black uppercase tracking-widest text-xs hover:bg-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition-all shadow-2xl">
+            Explore All Projects <FiArrowRight />
+          </a>
+        </motion.div>
+
       </div>
     </section>
   );

@@ -1,10 +1,10 @@
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaYoutube } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaYoutube, FaArrowUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
   const quickLinks = [
-    { name: "Home", path: "/home" },
+    { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Projects", path: "/projects" },
     { name: "Services", path: "/services" },
@@ -12,156 +12,119 @@ const Footer = () => {
   ];
   
   const socialLinks = [
-    { icon: <FaGithub size={20} />, url: "https://github.com/aryanahmad", name: "GitHub" },
-    { icon: <FaLinkedin size={20} />, url: "https://www.linkedin.com/in/aryan-ahmad-a5185133b/", name: "LinkedIn" },
-    { icon: <FaTwitter size={20} />, url: "https://twitter.com/aryantweets", name: "Twitter" },
-    { icon: <FaEnvelope size={20} />, url: "mailto:aryanahmad478@gmail.com", name: "Email" }
+    { icon: <FaGithub size={18} />, url: "https://github.com/aryanahmad", name: "GitHub" },
+    { icon: <FaLinkedin size={18} />, url: "https://www.linkedin.com/in/aryan-ahmad-a5185133b/", name: "LinkedIn" },
+    { icon: <FaTwitter size={18} />, url: "https://twitter.com/aryantweets", name: "Twitter" },
+    { icon: <FaEnvelope size={18} />, url: "mailto:aryanahmad478@gmail.com", name: "Email" }
   ];
 
-  // Animation variants
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3
-      }
-    }
-  };
-
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={container}
-        >
-          {/* Bio Section */}
-          <motion.div className="space-y-6" variants={item}>
-            <div>
-              <motion.h2 
-                className="text-2xl font-bold  bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
-                whileHover={{ scale: 1.02 }}
-              >
-                Aryan Ahmad
-              </motion.h2>
-              <p className="mt-3 text-gray-300 leading-relaxed">
-                Full Stack & AI Developer passionate about building impactful digital experiences.
-              </p>
-            </div>
-            <div className="flex space-x-5">
+    <footer className="relative bg-white dark:bg-gray-950 pt-24 pb-12 transition-colors duration-500 overflow-hidden border-t border-gray-100 dark:border-gray-900">
+      
+      {/* Background Decoration */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
+      
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+          
+          {/* Brand Column */}
+          <div className="lg:col-span-1">
+            <Link to="/" className="text-3xl font-black text-gray-900 dark:text-white mb-6 block">
+              Aryan<span className="text-blue-600">.</span>
+            </Link>
+            <p className="text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-xs">
+              Building the future of digital experiences through innovative code and AI-driven solutions.
+            </p>
+            <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.url} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors duration-300 p-2 rounded-full bg-gray-800 hover:bg-gradient-to-r from-blue-600 to-purple-600"
-                  whileHover={{ 
-                    y: -3,
-                    scale: 1.1,
-                    boxShadow: "0 5px 15px rgba(99, 102, 241, 0.3)"
-                  }}
+                  whileHover={{ y: -5, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 flex items-center justify-center rounded-xl glass border border-gray-100 dark:border-white/5 text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all shadow-sm"
                   aria-label={social.name}
-                  variants={item}
                 >
                   {social.icon}
                 </motion.a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Quick Links */}
-          <motion.div className="space-y-6" variants={item}>
-            <motion.h3 
-              className="text-xl font-semibold text-white"
-              whileHover={{ x: 5 }}
-            >
-              Quick Links
-            </motion.h3>
-            <ul className="space-y-3">
+          {/* Links Column */}
+          <div>
+            <h4 className="text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white mb-8">Navigation</h4>
+            <ul className="space-y-4">
               {quickLinks.map((link, index) => (
-                <motion.li 
-                  key={index}
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
+                <li key={index}>
                   <Link 
                     to={link.path}
-                    className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group"
+                    className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
                   >
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                     {link.name}
                   </Link>
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Contact Info */}
-          <motion.div className="space-y-6" variants={item}>
-            <motion.h3 
-              className="text-xl font-semibold text-white"
-              whileHover={{ x: 5 }}
-            >
-              Get In Touch
-            </motion.h3>
-            <address className="not-italic text-gray-300 space-y-3">
-              <motion.p 
-                className="flex items-center"
-                whileHover={{ x: 5 }}
-              >
-                <FaEnvelope className="mr-3 text-blue-400" />
-                aryanahmad478@gmail.com
-              </motion.p>
-              <motion.p 
-                className="flex items-center"
-                whileHover={{ x: 5 }}
-              >
-                <svg className="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                Vehari, Pakistan
-              </motion.p>
-              <motion.p 
-                className="mt-4 p-3 bg-gray-800 rounded-lg border-l-4 border-blue-500"
-                whileHover={{ scale: 1.02 }}
-              >
-                Available for freelance & collaborations
-              </motion.p>
-            </address>
-          </motion.div>
-        </motion.div>
+          {/* Services Column */}
+          <div>
+            <h4 className="text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white mb-8">Expertise</h4>
+            <ul className="space-y-4">
+              {['Web Development', 'Mobile Apps', 'AI Integration', 'UI/UX Design', 'Cloud Solutions'].map((service, index) => (
+                <li key={index} className="text-gray-500 dark:text-gray-400 font-medium cursor-default hover:text-gray-900 dark:hover:text-white transition-colors">
+                  {service}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Copyright */}
-        <motion.div 
-          className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <p>© {new Date().getFullYear()} Aryan Ahmad. All rights reserved.</p>
+          {/* Contact Column */}
+          <div>
+            <h4 className="text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white mb-8">Newsletter</h4>
+            <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">
+              Subscribe to get the latest updates on projects and tech.
+            </p>
+            <div className="flex gap-2 p-1.5 rounded-2xl glass border border-gray-100 dark:border-white/5">
+              <input 
+                type="email" 
+                placeholder="Email address"
+                className="bg-transparent border-none focus:ring-0 px-4 py-2 w-full text-sm text-gray-900 dark:text-white outline-none"
+              />
+              <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition-all whitespace-nowrap shadow-lg shadow-blue-500/20">
+                Join Now
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="pt-8 border-t border-gray-100 dark:border-gray-900 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-gray-400 text-sm font-medium">
+            © {new Date().getFullYear()} Aryan Ahmad. Built with passion and code.
+          </p>
           
-        </motion.div>
+          <div className="flex gap-8">
+            <Link to="/privacy" className="text-gray-400 hover:text-gray-900 dark:hover:text-white text-xs font-bold uppercase tracking-widest transition-colors">Privacy</Link>
+            <Link to="/terms" className="text-gray-400 hover:text-gray-900 dark:hover:text-white text-xs font-bold uppercase tracking-widest transition-colors">Terms</Link>
+          </div>
+
+          <motion.button 
+            onClick={scrollToTop}
+            whileHover={{ y: -5 }}
+            className="w-12 h-12 flex items-center justify-center rounded-2xl glass border border-gray-100 dark:border-white/5 text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 shadow-xl"
+          >
+            <FaArrowUp />
+          </motion.button>
+        </div>
       </div>
     </footer>
   );
