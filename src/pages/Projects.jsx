@@ -18,75 +18,106 @@ import { motion, AnimatePresence } from 'framer-motion';
 const ProjectsPage = () => {
   // Project data with Unsplash images
   const projects = [
-    {
-      id: 1,
-      title: "IntelliMart AI",
-      description: "An AI-powered shopping assistant that uses computer vision to identify products and provide real-time pricing comparisons, nutritional information, and personalized recommendations.",
-      tags: ["AI", "Python", "OpenCV", "TensorFlow"],
-      category: "AI",
-      thumbnail: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80",
-      github: "https://github.com/aryanahmad/intellimart",
-      live: "https://intellimart.demo",
-      video: "https://youtube.com/watch?v=example",
-      featured: true
-    },
-    {
-      id: 2,
-      title: "Portfolio v4",
-      description: "An interactive portfolio featuring glassmorphism, smooth animations, and advanced dark mode. Built with React and Framer Motion for a premium user experience.",
-      tags: ["React", "Framer Motion", "Tailwind", "Vite"],
-      category: "Web",
-      thumbnail: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1200&q=80",
-      github: "https://github.com/aryanahmad/portfolio-v4",
-      live: "https://aryanahmad.dev",
-      featured: true
-    },
-    {
-      id: 3,
-      title: "HealthTrack Pro",
-      description: "A Flutter-based health tracking application that syncs with wearable devices to monitor fitness metrics, sleep patterns, and nutrition intake.",
-      tags: ["Flutter", "Firebase", "Dart", "HealthKit"],
-      category: "Mobile",
-      thumbnail: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80",
-      github: "https://github.com/aryanahmad/healthtrack",
-      live: "https://healthtrack.app",
-      featured: false
-    },
-    {
-      id: 4,
-      title: "E-Commerce Analytics",
-      description: "A comprehensive admin dashboard for e-commerce businesses with predictive analytics, inventory management, and customer behavior insights.",
-      tags: ["React", "Node.js", "MongoDB", "D3.js"],
-      category: "Full-Stack",
-      thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-      github: "https://github.com/aryanahmad/ecom-dashboard",
-      live: "https://dashboard.shopdemo.com",
-      featured: false
-    },
-    {
-      id: 5,
-      title: "NeuroAssistant SDK",
-      description: "A developer toolkit for building custom voice assistants with advanced natural language processing and emotional intelligence capabilities.",
-      tags: ["Python", "NLP", "Machine Learning", "FastAPI"],
-      category: "AI",
-      thumbnail: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80",
-      github: "https://github.com/aryanahmad/voice-sdk",
-      live: "https://voice-sdk.dev",
-      featured: true
-    },
-    {
-      id: 6,
-      title: "TaskFlow OS",
-      description: "A productivity operating system within the browser, featuring Kanban boards, real-time collaboration, and deep tool integrations.",
-      tags: ["React", "Express", "PostgreSQL", "Socket.io"],
-      category: "Full-Stack",
-      thumbnail: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?auto=format&fit=crop&w=1200&q=80",
-      github: "https://github.com/aryanahmad/taskflow",
-      live: "https://taskflow.app",
-      featured: false
-    }
-  ];
-
+  {
+    id: 1,
+    title: "Ajaia Docs",
+    description: "Real-time collaborative document editor with multi-user editing, <200ms sync latency, and Supabase Row Level Security securing 100% of per-user queries.",
+    tags: ["Next.js 14", "TypeScript", "Supabase", "Tiptap", "Vercel"],
+    category: "Full-Stack",
+    thumbnail: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/ajaia-docs",
+    live: "https://ajaia-docs.vercel.app",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "IntelliMart",
+    description: "AI-powered e-commerce platform with OpenAI chatbot, voice & image search cutting manual browse time ~50%, Stripe checkout, and 15+ REST API endpoints.",
+    tags: ["React.js", "Node.js", "MongoDB", "OpenAI API", "Stripe", "Railway"],
+    category: "AI",
+    thumbnail: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/intellimart",
+    live: "https://intellimart.vercel.app",
+    featured: true
+  },
+  {
+    id: 3,
+    title: "TravelMate",
+    description: "Full-stack travel booking system for 100+ destinations with dynamic pricing engine. Streamlined booking flow from 6 steps to 3, increasing completion rate by 40%.",
+    tags: ["React.js", "Node.js", "MongoDB", "JWT"],
+    category: "Full-Stack",
+    thumbnail: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/travelmate",
+    live: "https://travelmate.vercel.app",
+    featured: false
+  },
+  {
+    id: 4,
+    title: "AI Resume Analyzer",
+    description: "OpenAI-powered CV screening tool with 95% text extraction accuracy, reducing recruiter screening time by ~60% through automated analysis and feedback.",
+    tags: ["React.js", "Node.js", "OpenAI API", "PDF-Parse"],
+    category: "AI",
+    thumbnail: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/ai-resume-analyzer",
+    live: "https://ai-resume-analyzer.vercel.app",
+    featured: true
+  },
+  {
+    id: 5,
+    title: "DevDesign",
+    description: "AI-driven UI layout generator using Google Gemini API. Generate full UI components from text prompts with versioning across 10+ iterations per session.",
+    tags: ["React.js", "Node.js", "Gemini API", "MongoDB"],
+    category: "AI",
+    thumbnail: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/devdesign",
+    live: "https://devdesign.vercel.app",
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Gold Bazaar",
+    description: "Jewelry management system with 200+ SKU inventory, live gold rate auto-pricing, 50+ daily billing transactions, and 100% elimination of manual calculation errors.",
+    tags: ["React.js", "Node.js", "MongoDB", "React Native", "Live Rate API"],
+    category: "Mobile ,Web",
+    thumbnail: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/gold-bazaar",
+    live: "https://gold-bazaar.vercel.app",
+    featured: false
+  },
+  {
+    id: 7,
+    title: "Ambrosia",
+    description: "Full-stack restaurant management system with reservations, online ordering, and dynamic menu filtering using Redux Toolkit for real-time state management.",
+    tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Redux Toolkit"],
+    category: "Full-Stack",
+    thumbnail: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/ambrosia",
+    live: "https://ambrosia.vercel.app",
+    featured: false
+  },
+  {
+    id: 8,
+    title: "Talent IQ",
+    description: "AI-powered talent assessment platform with skill evaluation, analytics dashboard, and RBAC. Leverages OpenAI API to generate personalized learning roadmaps.",
+    tags: ["React.js", "Node.js", "MongoDB", "OpenAI API", "TailwindCSS"],
+    category: "AI",
+    thumbnail: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/talent-iq",
+    live: "https://talent-iq.vercel.app",
+    featured: false
+  },
+  {
+    id: 9,
+    title: "Sales & Revenue Predictor",
+    description: "ML-powered sales forecasting model built with Python and Scikit-learn, achieving R²=0.88 accuracy for revenue prediction and business trend analysis.",
+    tags: ["Python", "Scikit-learn", "Machine Learning", "Flask"],
+    category: "AI,All",
+    thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/sales-predictor",
+    live: "https://sales-predictor.vercel.app",
+    featured: false
+  }
+];
   const categories = ["All", "Web", "AI", "Mobile", "Full-Stack"];
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
@@ -307,4 +338,4 @@ const ProjectsPage = () => {
   );
 };
 
-export default ProjectsPage;
+export default ProjectsPage;

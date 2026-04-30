@@ -8,39 +8,106 @@ import { FiExternalLink, FiGithub, FiArrowRight } from 'react-icons/fi';
 
 const ProjectsSection = () => {
   const projects = [
-    {
-      title: 'AI-Powered E-commerce',
-      description: 'Integrated recommendation engine with Django backend and React frontend.',
-      tags: ['React', 'Django', 'ML'],
-      image: 'https://images.unsplash.com/photo-1581092334115-1acb839bffb5?auto=format&fit=crop&w=800&q=80',
-      demoLink: '#',
-      githubLink: '#'
-    },
-    {
-      title: 'Fitness Tracking Ecosystem',
-      description: 'Built with Flutter for cross-platform performance and real-time data.',
-      tags: ['Flutter', 'Firebase', 'Dart'],
-      image: 'https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=800&q=80',
-      demoLink: '#',
-      githubLink: '#'
-    },
-    {
-      title: 'Smart Home IoT Platform',
-      description: 'Real-time monitoring and voice control integration for modern homes.',
-      tags: ['IoT', 'Node.js', 'React Native'],
-      image: 'https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80',
-      demoLink: '#',
-      githubLink: '#'
-    },
-    {
-      title: 'Blockchain Voting Solution',
-      description: 'Decentralized voting platform with Ethereum smart contracts and Web3.',
-      tags: ['Solidity', 'Web3', 'Ethereum'],
-      image: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&w=800&q=80',
-      demoLink: '#',
-      githubLink: '#'
-    }
-  ];
+  {
+    id: 1,
+    title: "Ajaia Docs",
+    description: "Real-time collaborative document editor with multi-user editing, <200ms sync latency, and Supabase Row Level Security securing 100% of per-user queries.",
+    tags: ["Next.js 14", "TypeScript", "Supabase", "Tiptap", "Vercel"],
+    category: "Full-Stack",
+    thumbnail: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/ajaia-docs",
+    live: "https://ajaia-docs.vercel.app",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "IntelliMart",
+    description: "AI-powered e-commerce platform with OpenAI chatbot, voice & image search cutting manual browse time ~50%, Stripe checkout, and 15+ REST API endpoints.",
+    tags: ["React.js", "Node.js", "MongoDB", "OpenAI API", "Stripe", "Railway"],
+    category: "AI",
+    thumbnail: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/intellimart",
+    live: "https://intellimart.vercel.app",
+    featured: true
+  },
+  {
+    id: 3,
+    title: "TravelMate",
+    description: "Full-stack travel booking system for 100+ destinations with dynamic pricing engine. Streamlined booking flow from 6 steps to 3, increasing completion rate by 40%.",
+    tags: ["React.js", "Node.js", "MongoDB", "JWT"],
+    category: "Full-Stack",
+    thumbnail: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/travelmate",
+    live: "https://travelmate.vercel.app",
+    featured: false
+  },
+  {
+    id: 4,
+    title: "AI Resume Analyzer",
+    description: "OpenAI-powered CV screening tool with 95% text extraction accuracy, reducing recruiter screening time by ~60% through automated analysis and feedback.",
+    tags: ["React.js", "Node.js", "OpenAI API", "PDF-Parse"],
+    category: "AI",
+    thumbnail: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/ai-resume-analyzer",
+    live: "https://ai-resume-analyzer.vercel.app",
+    featured: true
+  },
+  {
+    id: 5,
+    title: "DevDesign",
+    description: "AI-driven UI layout generator using Google Gemini API. Generate full UI components from text prompts with versioning across 10+ iterations per session.",
+    tags: ["React.js", "Node.js", "Gemini API", "MongoDB"],
+    category: "AI",
+    thumbnail: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/devdesign",
+    live: "https://devdesign.vercel.app",
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Gold Bazaar",
+    description: "Jewelry management system with 200+ SKU inventory, live gold rate auto-pricing, 50+ daily billing transactions, and 100% elimination of manual calculation errors.",
+    tags: ["React.js", "Node.js", "MongoDB", "React Native", "Live Rate API"],
+    category: "Mobile",
+    thumbnail: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/gold-bazaar",
+    live: "https://gold-bazaar.vercel.app",
+    featured: false
+  },
+  {
+    id: 7,
+    title: "Ambrosia",
+    description: "Full-stack restaurant management system with reservations, online ordering, and dynamic menu filtering using Redux Toolkit for real-time state management.",
+    tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Redux Toolkit"],
+    category: "Full-Stack",
+    thumbnail: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/ambrosia",
+    live: "https://ambrosia.vercel.app",
+    featured: false
+  },
+  {
+    id: 8,
+    title: "Talent IQ",
+    description: "AI-powered talent assessment platform with skill evaluation, analytics dashboard, and RBAC. Leverages OpenAI API to generate personalized learning roadmaps.",
+    tags: ["React.js", "Node.js", "MongoDB", "OpenAI API", "TailwindCSS"],
+    category: "AI",
+    thumbnail: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/talent-iq",
+    live: "https://talent-iq.vercel.app",
+    featured: false
+  },
+  {
+    id: 9,
+    title: "Sales & Revenue Predictor",
+    description: "ML-powered sales forecasting model built with Python and Scikit-learn, achieving R²=0.88 accuracy for revenue prediction and business trend analysis.",
+    tags: ["Python", "Scikit-learn", "Machine Learning", "Flask"],
+    category: "AI",
+    thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    github: "https://github.com/Aryan-strack/sales-predictor",
+    live: "https://sales-predictor.vercel.app",
+    featured: false
+  }
+];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -117,7 +184,7 @@ const ProjectsSection = () => {
                   {/* Image Container */}
                   <div className="relative h-64 overflow-hidden">
                     <img 
-                      src={project.image} 
+                      src={project.thumbnail} 
                       alt={project.title} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
@@ -145,7 +212,7 @@ const ProjectsSection = () => {
                     <div className="mt-auto flex items-center justify-between">
                       <div className="flex space-x-3">
                         <motion.a 
-                          href={project.githubLink}
+                          href={project.github}
                           whileHover={{ y: -3, scale: 1.1 }}
                           className="w-10 h-10 flex items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-400 dark:text-gray-500 rounded-xl hover:bg-blue-600 hover:text-white transition-all"
                         >
